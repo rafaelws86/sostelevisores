@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags Básicas e para WhatsApp/Redes Sociais -->
+    <title>SOS Televisores | Conserto e Assistência Técnica</title>
+    <meta name="description" content="Assistência Técnica Especializada em televisores LED, QLED, OLED e LCD na Vila Isolina Mazzei, SP.">
+    <meta property="og:title" content="SOS Televisores | Assistência Técnica">
+    <meta property="og:description" content="Especialista em televisores LED, QLED, OLED e LCD. Reparo de placas, barramentos de LED e laudos técnicos.">
+    <meta property="og:type" content="website">
+    <!-- Quando você tiver uma imagem hospedada na internet, cole o link dela no content abaixo para aparecer no WhatsApp -->
+    <meta property="og:image" content="https://i.imgur.com/link-da-sua-imagem.jpg">
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #1a73e8;
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        /* Estilos do Logotipo em SVG */
+        .logo-svg {
+            width: 65px;
+            height: 65px;
+            margin-bottom: 15px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: 600;
+        }
+        .header p {
+            margin: 8px 0 0;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        
+        /* Estilo para o telefone no cabeçalho */
+        .header-phone {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.2s;
+        }
+        .header-phone:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        .header-phone svg {
+            width: 16px;
+            height: 16px;
+            fill: #ffffff;
+            margin-right: 8px;
+        }
+
+        .content {
+            padding: 25px 20px;
+        }
+        
+        /* Layout de colunas para Endereço e Horário */
+        .info-columns {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .info-col {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            font-size: 13.5px;
+            color: #3c4043;
+            line-height: 1.5;
+        }
+        .info-col svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            fill: #1a73e8;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* Estilo interativo para o link de endereço */
+        .address-link {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-block;
+        }
+        .address-link:hover {
+            color: #1a73e8;
+        }
+        .link-hint {
+            font-size: 11px;
+            color: #1a73e8;
+            display: block;
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        /* Seção de Pagamento */
+        .payment-info {
+            display: flex;
+            align-items: center;
+            font-size: 13.5px;
+            color: #3c4043;
+            background-color: #f8f9fa;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .payment-info svg {
+            width: 20px;
+            height: 20px;
+            fill: #5f6368;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Selo de Credibilidade - CRT */
+        .credibility-badge {
+            display: flex;
+            align-items: center;
+            background-color: #e6f4ea;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #137333;
+        }
+        .credibility-badge svg {
+            width: 26px;
+            height: 26px;
+            fill: #137333;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .credibility-badge div {
+            font-size: 13.5px;
+            color: #137333;
+            line-height: 1.4;
+        }
+        .credibility-badge strong {
+            font-size: 14.5px;
+        }
+
+        .services {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid #1a73e8;
+        }
+        .services h3 {
+            margin: 0 0 10px;
+            font-size: 15px;
+            color: #202124;
+        }
+        .services ul {
+            margin: 0;
+            padding: 0 0 0 20px;
+            font-size: 14px;
+            color: #5f6368;
+        }
+
+        /* Seção de Marcas e Tecnologias (Nuvem de Tags) */
+        .brands {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e8eaed;
+        }
+        .brands h3 {
+            margin: 0 0 8px;
+            font-size: 15px;
+            color: #202124;
+            display: flex;
+            align-items: center;
+        }
+        .brands h3 svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            fill: #1a73e8;
+        }
+        .brands p {
+            font-size: 13.5px;
+            color: #5f6368;
+            margin: 0 0 12px;
+            line-height: 1.4;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag {
+            background-color: #f1f3f4;
+            color: #3c4043;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #dadce0;
+        }
+        
+        .reviews {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e8eaed;
+        }
+        .reviews h3 {
+            margin: 0 0 15px;
+            font-size: 15px;
+            color: #202124;
+            display: flex;
+            align-items: center;
+        }
+        .reviews h3 svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+        }
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 12px;
+            padding-bottom: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: #dadce0 transparent;
+        }
+        .carousel-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .carousel-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .carousel-container::-webkit-scrollbar-thumb {
+            background-color: #dadce0;
+            border-radius: 10px;
+        }
+        .review-card {
+            flex: 0 0 85%;
+            scroll-snap-align: start;
+            background-color: #ffffff;
+            border: 1px solid #e8eaed;
+            padding: 15px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        .stars {
+            color: #fbbc04;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+        .review-text {
+            font-size: 13px;
+            color: #3c4043;
+            margin: 0 0 8px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+        .review-author {
+            font-size: 12px;
+            color: #1a73e8;
+            font-weight: 600;
+        }
+        .review-date {
+            color: #80868b;
+            font-weight: normal;
+            font-size: 11px;
+            margin-left: 4px;
+        }
+        .btn-maps {
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            color: #1a73e8;
+            text-decoration: none;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        .btn-maps:hover {
+            text-decoration: underline;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: calc(100% - 40px);
+            margin: 10px auto 25px;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #80868b;
+            padding: 15px;
+            border-top: 1px solid #e8eaed;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        <!-- Logotipo Geométrico desenhado em código -->
+        <svg viewBox="0 0 100 100" class="logo-svg" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <!-- Triângulo apontando para direita -->
+                <polygon points="30,10 90,40 30,70" />
+                <!-- Triângulo apontando para esquerda -->
+                <polygon points="70,30 10,60 70,90" />
+                <!-- Linha no centro do triângulo da direita -->
+                <line x1="55" y1="25" x2="55" y2="55" />
+                <!-- Linha no centro do triângulo da esquerda -->
+                <line x1="45" y1="45" x2="45" y2="75" />
+            </g>
+        </svg>
+        
+        <h1>SOS Televisores</h1>
+        <p>Assistência Técnica Especializada</p>
+        
+        <!-- Botão de Telefone no Cabeçalho (SVG Branco) -->
+        <a href="https://wa.me/5511989893131?text=Olá,%20preciso%20de%20um%20orçamento%20para%20minha%20TV!" target="_blank" class="header-phone">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            (11) 9 8989-3131
+        </a>
+    </div>
+    
+    <div class="content">
+        
+        <!-- Colunas: Endereço (Esquerda) e Horário (Direita) -->
+        <div class="info-columns">
+            <div class="info-col">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div>
+                    <!-- Endereço agora é um link interativo para o Google Maps -->
+                    <a href="https://maps.google.com/?q=Rua+Piatá,+696,+Vila+Isolina+Mazzei,+São+Paulo" target="_blank" class="address-link">
+                        <strong>Endereço</strong><br>
+                        Rua Piatá, 696<br>
+                        Vila Isolina Mazzei<br>
+                        São Paulo - SP
+                        <span class="link-hint">Abrir no Mapa</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="info-col">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                <div>
+                    <strong>Atendimento</strong><br>
+                    Seg-Sex: 14:00 - 17:30<br>
+                    Sábados: 10:00 - 13:00
+                </div>
+            </div>
+        </div>
+
+        <!-- Opções de Pagamento -->
+        <div class="payment-info">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+            <div>
+                <strong>Pagamento:</strong> Aceitamos Pix e Cartões
+            </div>
+        </div>
+
+        <!-- Selo de Credibilidade / CRT -->
+        <div class="credibility-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            <div>
+                <strong>Técnico Certificado</strong><br>
+                Profissional habilitado e cadastrado no CRT (Conselho Regional dos Técnicos).
+            </div>
+        </div>
+
+        <!-- Especialidades -->
+        <div class="services">
+            <h3>Nossos Serviços</h3>
+            <ul>
+                <li>Reparo em placas de televisores</li>
+                <li>Troca de barramentos de LED</li>
+                <li>Diagnóstico e emissão de laudos técnicos</li>
+                <li>Configuração e programação de aparelhos</li>
+            </ul>
+        </div>
+
+        <!-- Marcas e Tecnologias (Nuvem de Tags) -->
+        <div class="brands">
+            <h3>
+                <svg viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                Marcas e Tecnologias
+            </h3>
+            <p>Especialista em televisores <strong>LED, QLED, OLED e LCD</strong>. Realizamos reparos nas principais marcas:</p>
+            <div class="tags-container">
+                <span class="tag">Samsung</span>
+                <span class="tag">LG</span>
+                <span class="tag">TCL</span>
+                <span class="tag">AOC</span>
+                <span class="tag">Philco</span>
+                <span class="tag">Philips</span>
+                <span class="tag">Semp</span>
+                <span class="tag">Sony</span>
+                <span class="tag">Hisense</span>
+                <span class="tag">Aiwa</span>
+            </div>
+        </div>
+
+        <!-- Avaliações do Google Maps -->
+        <div class="reviews">
+            <h3>
+                <svg viewBox="0 0 48 48" style="fill: currentColor;"><path fill="#4285F4" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#34A853" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#FBBC05" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#EA4335" d="M12.717,28.054C12.244,26.756,12,25.405,12,24c0-1.402,0.244-2.753,0.716-4.049L6.194,14.85C4.434,17.61,3.404,20.73,3.404,24c0,3.342,1.066,6.536,2.894,9.351L12.717,28.054z"/></svg>
+                Avaliações Recentes
+            </h3>
+            
+            <div class="carousel-container">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Gostaria de agradecer ao Rafael pelo excelente atendimento! Ele foi muito atencioso, prestativo e ajudou com o problema da nossa TV com muita competência. Além disso, fez o reparo temporário gratuitamente, o que foi uma atitude de muita gentileza e honestidade. Ficamos muito satisfeitos e com certeza recomendamos o trabalho dele!"</p>
+                    <div class="review-author">- Giovanna Lagonegro <span class="review-date">• 04/10/2026</span></div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Sensacional. Uma atenção ímpar, conhecimento avançado, rapidez e preço justo. Me tornei cliente. Obrigado, Rafael!"</p>
+                    <div class="review-author">- Luis Collicchio <span class="review-date">• 30/09/2026</span></div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"RECOMENDO DE OLHOS FECHADOS! Rafael é muito honesto, rápido, de conhecimento ímpar, sem enrolação. Veio em casa, arrumou a tv sem inventar defeitos, esclareceu direitinho, pontual. Podem chamar com confiança, nota 1000!!!"</p>
+                    <div class="review-author">- Cris Brida <span class="review-date">• 05/02/2026</span></div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Ótimo atendimento, Rapidez, eficiência e segurança foi o que senti ao usar os serviços da SOS Televisores."</p>
+                    <div class="review-author">- Rosana maria Silva <span class="review-date">• 01/10/2026</span></div>
+                </div>
+            </div>
+
+            <a href="https://maps.app.goo.gl/bGTUkomxiXrhBNgo8" target="_blank" class="btn-maps">Ver todas as avaliações no Google</a>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5511989893131?text=Olá,%20preciso%20de%20um%20orçamento%20para%20minha%20TV!" target="_blank" class="btn-whatsapp">
+        Solicitar Orçamento no WhatsApp
+    </a>
+    
+    <div class="footer">
+        Rede Tríade Ltda ME | CNPJ: 26.071.591/0001-81 (desde 2016)
+    </div>
+</div>
+
+</body>
+</html>
