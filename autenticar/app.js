@@ -8,6 +8,8 @@
   function hide() {
     element('result').hidden = true; element('gateway').hidden = true;
     element('open-viewer').removeAttribute('href');
+    element('record-kind').textContent = 'Consulte os dados registrados e compare com o documento recebido.';
+    element('record-kind').className = 'notice';
   }
   function pair(dl, label, value) {
     const dt = document.createElement('dt'); dt.textContent = label;
@@ -18,7 +20,9 @@
   function render(p) {
     C.assertPublicProjection(p);
     ['identity','equipment','parts','totals'].forEach(clear);
-    const status = { VALIDO: ['Registro de teste válido', 'valid'], SUBSTITUIDO: ['Versão substituída — confira a emissão vigente com o emissor', 'replaced'], CANCELADO: ['Registro cancelado — não utilizar este laudo', 'cancelled'] }[p.status];
+    element('record-kind').textContent = p.sandbox ? 'AMBIENTE DE TESTE · DADOS FICTÍCIOS · SEM VALIDADE DOCUMENTAL' : 'DADOS REGISTRADOS NA EMISSÃO · COMPARE COM SEU DOCUMENTO';
+    element('record-kind').className = p.sandbox ? 'prototype' : 'notice';
+    const status = { VALIDO: [p.sandbox ? 'Registro de teste válido' : 'Registro válido', 'valid'], SUBSTITUIDO: ['Versão substituída — confira a emissão vigente com o emissor', 'replaced'], CANCELADO: ['Registro cancelado — não utilizar este laudo', 'cancelled'] }[p.status];
     element('status').textContent = status[0]; element('status').className = 'status ' + status[1];
     element('comparison-name').textContent = p.customerName;
     element('comparison-total').textContent = p.declaredTotal;
@@ -40,7 +44,7 @@
     element('empty-parts').hidden = p.parts.length !== 0;
     pair(element('totals'), 'Mão de obra', p.labor); pair(element('totals'), 'Total declarado', p.declaredTotal);
     element('result').hidden = false;
-    message('Assinatura dos dados de teste conferida. Compare nome, valores e demais informações com o PDF recebido.');
+    message('Assinatura dos dados' + (p.sandbox ? ' de teste' : '') + ' conferida. Compare nome, valores e demais informações com o PDF recebido.');
   }
   function decode64(value) { return Uint8Array.from(atob(value), c => c.charCodeAt(0)); }
   async function validateEnvelope(envelope, token) {
@@ -78,12 +82,12 @@
     }
     element('open-viewer').href = address + '#' + token;
     element('gateway').hidden = false;
-    message('Abra a conferência para consultar os dados originais desta emissão de teste.');
+    message('Abra a conferência para consultar os dados originais desta emissão.');
   }
   let generation = 0;
   async function start() {
     const own = ++generation;
-    hide(); element('retry').hidden = true; message('Consultando registro de teste…');
+    hide(); element('retry').hidden = true; message('Consultando registro…');
     // RPC do Google não é cancelável. Uma resposta tardia nunca substitui uma nova consulta.
     const timer = window.setTimeout(() => {
       if (own !== generation) return;

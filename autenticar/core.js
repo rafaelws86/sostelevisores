@@ -128,7 +128,7 @@ var LaudosCore = (() => {
   }
   function projection(snapshot, meta) {
     requireThat(['VALIDO', 'SUBSTITUIDO', 'CANCELADO'].includes(meta.status), 'Estado inválido.');
-    const p = { schemaVersion: 1, sandbox: true, accessBinding: meta.accessBinding, versionId: meta.versionId, status: meta.status,
+    const p = { schemaVersion: 1, sandbox: meta.sandbox === undefined ? true : meta.sandbox, accessBinding: meta.accessBinding, versionId: meta.versionId, status: meta.status,
       registeredAt: meta.registeredAt, updatedAt: meta.updatedAt, os: snapshot.os,
       customerName: snapshot.customerName, issueDate: snapshot.issueDate.display,
       trt: snapshot.trt.number, equipment: { ...snapshot.equipment }, technicalDescription: snapshot.technicalDescription,
@@ -142,7 +142,7 @@ var LaudosCore = (() => {
     const keys = ['schemaVersion','sandbox','accessBinding','versionId','status','registeredAt','updatedAt','os','customerName',
       'issueDate','trt','equipment','technicalDescription','parts','labor','declaredTotal','currency'].sort();
     requireThat(p && canonical(Object.keys(p).sort()) === canonical(keys), 'Campos públicos não autorizados.');
-    requireThat(p.schemaVersion === 1 && p.sandbox === true && p.currency === 'BRL', 'Somente protótipo fictício.');
+    requireThat(p.schemaVersion === 1 && typeof p.sandbox === 'boolean' && p.currency === 'BRL', 'Tipo de emissão inválido.');
     requireThat(typeof p.accessBinding === 'string' && /^[a-f0-9]{64}$/.test(p.accessBinding), 'Vínculo de acesso ausente.');
     requireThat(['VALIDO','SUBSTITUIDO','CANCELADO'].includes(p.status), 'Estado público inválido.');
     requireThat(typeof p.versionId === 'string' && /^[a-zA-Z0-9-]{8,80}$/.test(p.versionId), 'Versão inválida.');
@@ -163,6 +163,11 @@ var LaudosCore = (() => {
     requireThat(canonical(p).length <= 24000, 'Projeção excede limite.');
     return p;
   }
+  function assertReservationKind(config, pending) {
+    const expected = config.sandbox !== false;
+    const actual = pending.sandbox === undefined ? true : pending.sandbox;
+    requireThat(typeof actual === 'boolean' && actual === expected, 'O tipo de emissão mudou desde a preparação; preserve a reserva e revise o modo antes de finalizar.');
+  }
   function validateToken(token) { return typeof token === 'string' && /^[A-Za-z0-9_-]{43}$/.test(token); }
   function safeEqual(a, b) {
     if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
@@ -180,7 +185,7 @@ var LaudosCore = (() => {
     return body;
   }
   function cellString(value) { return typeof value === 'string' ? value : String(value); }
-  return { LEDGER_HEADERS, INDEX_HEADERS, MAP, requireThat, canonical, field, cents, parseTrt, assertMapping, resolveFieldCells,
-    buildSnapshot, projection, assertPublicProjection, validateToken, safeEqual, verificationUrl, eventBody, cellString };
+  return { supportsRealIssues: true, LEDGER_HEADERS, INDEX_HEADERS, MAP, requireThat, canonical, field, cents, parseTrt, assertMapping, resolveFieldCells,
+    buildSnapshot, projection, assertPublicProjection, assertReservationKind, validateToken, safeEqual, verificationUrl, eventBody, cellString };
 })();
 if (typeof module !== 'undefined') module.exports = LaudosCore;
