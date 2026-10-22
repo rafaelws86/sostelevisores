@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <title>SOS Televisores | Conferência de laudo — TESTE</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<main class="card">
+  <header class="header">
+    <svg viewBox="0 0 100 100" class="logo-svg" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"><polygon points="30,10 90,40 30,70"/><polygon points="70,30 10,60 70,90"/><path d="M55 25v30M45 45v30"/></g></svg>
+    <h1>SOS Televisores</h1><p>Conferência de documento técnico</p>
+  </header>
+  <div class="content">
+    <p class="prototype">AMBIENTE DE TESTE · DADOS FICTÍCIOS · SEM VALIDADE DOCUMENTAL</p>
+    <p id="message" role="status" aria-live="polite">Preparando consulta…</p>
+    <button id="retry" class="button" type="button" hidden>Tentar novamente</button>
+    <section id="gateway" hidden><p>Confira o nome, os valores e os demais dados do laudo. A consulta será aberta no serviço Google da SOS Televisores, sem cadastro.</p><a id="open-viewer" class="button" rel="noreferrer noopener">Conferir laudo</a></section>
+    <section id="result" hidden aria-label="Dados registrados">
+      <p id="status" class="status"></p>
+      <p class="notice">Compare estas informações com o PDF ou impresso recebido. Se houver diferença no nome, nos valores ou em qualquer outro dado, entre em contato com a SOS Televisores.</p>
+      <div class="comparison"><span>Cliente registrado</span><strong id="comparison-name"></strong><span>Total declarado na emissão</span><strong id="comparison-total" class="comparison-total"></strong></div>
+      <h2>Identificação do documento</h2><dl id="identity"></dl>
+      <h2>Equipamento</h2><dl id="equipment"></dl>
+      <h2>Diagnóstico / descrição técnica</h2><p id="technical" class="prewrap"></p>
+      <h2>Peças e valores declarados</h2><div class="table-scroll"><table><caption>Composição registrada na emissão</caption><thead><tr><th>Qtd.</th><th>Peça</th><th>Código</th><th>Unitário</th><th>Subtotal</th></tr></thead><tbody id="parts"></tbody></table></div>
+      <dl id="totals"></dl><p id="empty-parts" hidden>Sem peças registradas nesta emissão.</p>
+      <p class="notice">O link permite acesso aos dados exibidos. Compartilhe somente com quem precisa conferir o documento.</p>
+    </section>
+    <noscript>Ative JavaScript para conferir a assinatura e consultar este protótipo.</noscript>
+  </div>
+  <footer>Rede Tríade · SOS Televisores<br>Não envie dados pessoais por esta página.</footer>
+</main>
+</body></html>
